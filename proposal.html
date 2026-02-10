@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Heart's Question for You</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #fdf2f8;
+            color: #5a1a5c;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #f9a8d4 0%, #059669 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), 
+                        url(images.jpg/its.jpeg);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #be185d;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            color: #831843;
+        }
+        
+        .heart {
+            color: #ec4899;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #be185d;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: #ec4899;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        /* About Her Section */
+        .about-her {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            height: 250px;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-label {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        /* Memories Section */
+        .memories-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .memory {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .memory-icon {
+            font-size: 2.5rem;
+            color: #ec4899;
+            min-width: 60px;
+        }
+        
+        .memory-content h3 {
+            color: #be185d;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Proposal Section */
+        .proposal-section {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .proposal-text {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            color: #831843;
+            line-height: 1.8;
+        }
+        
+        .proposal-button {
+            background: linear-gradient(to right, #ec4899, #be185d);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .proposal-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(236, 72, 153, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #059669;
+            color: white;
+            margin-top: 4rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .memory {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Modal for the proposal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            animation: popup 0.5s ease;
+        }
+        
+        @keyframes popup {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .modal-title {
+            color: #be185d;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-text {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #5a1a5c;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .modal-button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .yes-button {
+            background: linear-gradient(to right, #10b981, #059669);
+            color: white;
+        }
+        
+        .no-button {
+            background: linear-gradient(to right, #ef4444, #dc2626);
+            color: white;
+        }
+        
+        .modal-button:hover {
+            transform: translateY(-3px);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: #be185d;
+            cursor: pointer;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart-particle {
+            position: absolute;
+            color: #ec4899;
+            font-size: 20px;
+            opacity: 0;
+            animation: float 5s linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                top: 100%;
+                opacity: 0;
+                transform: translateX(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: -10%;
+                opacity: 0;
+                transform: translateX(100px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">For My Love <i class="fas fa-heart"></i></div>
+                <div class="nav-links">
+                    <a href="#about">About You</a>
+                    <a href="#gallery">Our Gallery</a>
+                    <a href="#memories">Special Memories</a>
+                    <a href="#proposal">The Question</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>To The Most Amazing Woman <i class="fas fa-heart heart"></i></h1>
+            <p>Every moment with you is a treasure, and today I want to ask you the most important question of my life.</p>
+            <p>Scroll down to see why you mean everything to me...</p>
+        </div>
+    </section>
+    
+    <!-- About Her Section -->
+    <section class="section" id="about">
+        <h2 class="section-title">All About You</h2>
+        <div class="about-her">
+            <p class="about-text">From the moment I met you, I knew there was something special about you. Your smile lights up my world, your laughter is my favorite melody, and your kindness touches everyone around you.</p>
+            <p class="about-text">I love how you <span id="quality1">care deeply about the people you love</span>, the way you <span id="quality2">find joy in the little things</span>, and how you <span id="quality3">always push me to be a better person</span>. You're not just beautiful on the outside, but you have the most beautiful soul I've ever known.</p>
+            <p class="about-text">Every day with you feels like a gift. Whether we're going on adventures or just staying in, I'm happiest when I'm with you. You've brought so much light, love, and happiness into my life, and I can't imagine my future without you in it.</p>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+        <h2 class="section-title">Our Beautiful Moments</h2>
+        <p style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem;">my favorite memories with, or of you Pookie Wookie!.</p>
+        
+        <div class="gallery">
+            <!-- Replace these with your own images and videos -->
+            <div class="gallery-item">
+                <video controls poster="videos.mp4/us again.mp4"
+                 src="#" type="video/mp4">
+            </div>
+            <div class="gallery-item">
+                <img src="images.jpg/fav pic.JPG" alt="my favorite photo of you">
+            </div>
+            <div class="gallery-item">
+                <img src="images.jpg/IMG_3006.JPG" alt="my baby">
+            </div>
+            <div class="gallery-item">
+                <!-- Video placeholder - replace with your own video -->
+                <video controls poster="videos.mp4/us.mp4">
+                    <source src="#" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-label">A video of us I Love</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images.jpg/arsenal.JPG" alt="My sexy wife">
+            </div>
+            <div class="gallery-item">
+                <!-- Video placeholder - replace with your own video -->
+                <video controls poster="videos.mp4/mansur.mp4">
+                    <source src="#" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-label">My favourite Video</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Memories Section -->
+    <section class="section" id="memories">
+        <h2 class="section-title">Special Memories</h2>
+        <div class="memories-container">
+            <div class="memory">
+                <div class="memory-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="memory-content">
+                    <h3>The First Time We spoke</h3>
+                    <p>I'll never forget the day we first spoke. You were wearing that scent i still haven't gotten over, and I was instantly captivated by your persona. I knew right then that I wanted to get to know you better.</p>
+                </div>
+            </div>
+            
+            <div class="memory">
+                <div class="memory-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="memory-content">
+                    <h3>Our First meet</h3>
+                    <p>That amazing evening, on the 18th of november 2025, when we you got me food. I totally believe now that food is the way to a persons heart. Since then, I've loved learning about your dreams, your passions, and what makes you who you are.</p>
+                </div>
+            </div>
+            
+            <div class="memory">
+                <div class="memory-icon">
+                    <i class="fas fa-laugh-beam"></i>
+                </div>
+                <div class="memory-content">
+                    <h3>The Day You Made Me blush So Hard</h3>
+                    <p>i remember having a very long and stress filled day and when i got to your place you made me forget about everything and i made me feel like the most special girl on earth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Proposal Section -->
+    <section class="section" id="proposal">
+        <h2 class="section-title">The Most Important Question</h2>
+        <div class="proposal-section">
+            <p class="proposal-text">
+                You've become my favorite person, my confidant, and the person I want to share everything with. Every moment with you is special, and I can't imagine my life without you.
+            </p>
+            <p class="proposal-text">
+                You make me happier than I ever thought possible, and I want to spend every day making you just as happy.
+            </p>
+            <button class="proposal-button" id="proposalBtn">
+                <i class="fas fa-heart"></i> Click Here for My Question <i class="fas fa-heart"></i>
+            </button>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>Made with <i class="fas fa-heart"></i> for the most amazing woman in my life</p>
+        <p>Forever yours</p>
+    </footer>
+    
+    <!-- Proposal Modal -->
+    <div class="modal" id="proposalModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <h2 class="modal-title">Will You Be My Girlfriend?</h2>
+            <p class="modal-text">
+                I've fallen in love with every part of who you are. You're my sunshine on cloudy days and my favorite part of every day. 
+            </p>
+            <p class="modal-text">
+                I promise to always support you, cherish you, and love you with all my heart. So I have just one question for you...
+            </p>
+            <p class="modal-text" style="font-size: 1.8rem; font-weight: bold; color: #be185d;">
+                Will you make me the happiest person and be my girlfriend?
+            </p>
+            <div class="modal-buttons">
+                <button class="modal-button yes-button" id="yesButton">YES! A Thousand Times Yes!</button>
+                <button class="modal-button no-button" id="noButton">Maybe Later</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Response Modal -->
+    <div class="modal" id="responseModal">
+        <div class="modal-content">
+            <h2 class="modal-title" id="responseTitle"></h2>
+            <p class="modal-text" id="responseText"></p>
+            <button class="modal-button yes-button" id="closeResponse">Close</button>
+        </div>
+    </div>
+    
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            const heartCount = 30;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-particle');
+                heart.innerHTML = '❤';
+                
+                // Random position and animation
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            
+            // Proposal button click
+            const proposalBtn = document.getElementById('proposalBtn');
+            const proposalModal = document.getElementById('proposalModal');
+            const closeModal = document.getElementById('closeModal');
+            const yesButton = document.getElementById('yesButton');
+            const noButton = document.getElementById('noButton');
+            const responseModal = document.getElementById('responseModal');
+            const responseTitle = document.getElementById('responseTitle');
+            const responseText = document.getElementById('responseText');
+            const closeResponse = document.getElementById('closeResponse');
+            
+            // Open proposal modal
+            proposalBtn.addEventListener('click', function() {
+                proposalModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Close proposal modal
+            closeModal.addEventListener('click', function() {
+                proposalModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Yes button clicked
+            yesButton.addEventListener('click', function() {
+                proposalModal.style.display = 'none';
+                responseTitle.textContent = "You've Made Me So Happy!";
+                responseText.textContent = "I can't wait to start this beautiful journey with you as my girlfriend. I promise to cherish you and make you happy every single day. I love you more than words can express!";
+                responseModal.style.display = 'flex';
+                
+                // Create celebration hearts
+                createCelebrationHearts();
+            });
+            
+            // No button clicked (just for fun - it actually says yes)
+            noButton.addEventListener('click', function() {
+                proposalModal.style.display = 'none';
+                responseTitle.textContent = "I Know You're Just Teasing!";
+                responseText.textContent = "I saw that twinkle in your eye! I know you want to say yes, so I'll take that as a yes! Can't wait to call you my girlfriend!";
+                responseModal.style.display = 'flex';
+                
+                // Create celebration hearts
+                createCelebrationHearts();
+            });
+            
+            // Close response modal
+            closeResponse.addEventListener('click', function() {
+                responseModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === proposalModal) {
+                    proposalModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+                if (event.target === responseModal) {
+                    responseModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Dynamic qualities about her
+            const qualities = [
+                "care deeply about the people you love",
+                "find joy in the little things",
+                "always push me to be a better person",
+                "light up every room you enter",
+                "have the most beautiful soul",
+                "make everything more fun",
+                "are incredibly strong and resilient",
+                "have the most contagious laugh",
+                "are wiser than you realize",
+                "make me feel like I'm home"
+            ];
+            
+            // Randomly select and display qualities
+            function getRandomQualities() {
+                const shuffled = [...qualities].sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, 3);
+            }
+            
+            // Update the qualities in the about section
+            const selectedQualities = getRandomQualities();
+            document.getElementById('quality1').textContent = selectedQualities[0];
+            document.getElementById('quality2').textContent = selectedQualities[1];
+            document.getElementById('quality3').textContent = selectedQualities[2];
+            
+            // Create celebration hearts for yes response
+            function createCelebrationHearts() {
+                const heartsContainer = document.getElementById('floatingHearts');
+                const celebrationHeartCount = 50;
+                
+                for (let i = 0; i < celebrationHeartCount; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.classList.add('heart-particle');
+                        heart.innerHTML = '❤';
+                        heart.style.color = getRandomColor();
+                        
+                        // Random position and animation
+                        heart.style.left = Math.random() * 100 + 'vw';
+                        heart.style.fontSize = (Math.random() * 25 + 15) + 'px';
+                        heart.style.animationDelay = '0s';
+                        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                        
+                        heartsContainer.appendChild(heart);
+                        
+                        // Remove heart after animation completes
+                        setTimeout(() => {
+                            heart.remove();
+                        }, 5000);
+                    }, i * 100);
+                }
+            }
+            
+            function getRandomColor() {
+                const colors = ['#ec4899', '#be185d', '#f472b6', '#db2777', '#fda4af'];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+        });
+    </script>
+</body>
+</html>
